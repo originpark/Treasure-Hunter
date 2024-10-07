@@ -1,0 +1,41 @@
+[gd_scene load_steps=8 format=3 uid="uid://dyhq8fvbol0o6"]
+
+[ext_resource type="Texture2D" uid="uid://ckmwsk0wu2j01" path="res://asset/graphics/particle/Fall 01.png" id="1_dpus6"]
+[ext_resource type="Script" path="res://entity/stuff/dust/dust.gd" id="1_qy836"]
+[ext_resource type="Texture2D" uid="uid://dhql40oaw57mo" path="res://asset/graphics/particle/Fall 02.png" id="2_gci2m"]
+[ext_resource type="Texture2D" uid="uid://dk82isnq2dh0w" path="res://asset/graphics/particle/Fall 03.png" id="3_yrdit"]
+[ext_resource type="Texture2D" uid="uid://db4kovjy37dvj" path="res://asset/graphics/particle/Fall 04.png" id="4_lubo6"]
+[ext_resource type="Texture2D" uid="uid://dn2r0rfnds4hw" path="res://asset/graphics/particle/Fall 05.png" id="5_xal2u"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tdjtp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_dpus6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_gci2m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_yrdit")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_lubo6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_xal2u")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="FallDust" type="Node2D"]
+script = ExtResource("1_qy836")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -10)
+sprite_frames = SubResource("SpriteFrames_tdjtp")
+autoplay = "default"
+frame = 4
+frame_progress = 1.0

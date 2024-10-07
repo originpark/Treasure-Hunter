@@ -4,10 +4,16 @@
 
 - `assets`: 存放艺术资源
 - `component`: 组件,给某个节点赋予一个功能
+  - `direction`: 方向组件
+  - `state_machine`: 状态机组件
+
 - `character`: 逻辑上的游戏角色
+  - `captain_clown_nose`: 游戏主角,小丑鼻子
+
 - `entity`: 逻辑上的游戏物品
   - `interactable`: 可互动实体
-  - `static`: 静态实体
+  - `stuff`: 不可互动实体
+    - `dust`: 角色运动时生成的灰尘
 - `scene`: 游戏世界场景,关卡
 
 ## 架构
@@ -63,5 +69,30 @@
 
 ## 详解
 
-### 状态机
+### Dust
 
+角色运动时产生的灰尘
+
+**1.结构:**`/entity/stuff/dust`
+
+- `dust_creater.gd`:
+  - `generete(dust_scene, parent, pos) -> Dust:`: 生成指定的灰尘场景
+- `run_dust.tscn`: 奔跑灰尘场景
+- `fall_dust.tscn`: 降落灰尘场景
+- `jump_dust.tscn`: 起跳灰尘场景
+
+
+
+**2. 生成灰尘流程**
+
+以奔跑灰尘举例:
+
+进入run状态后,调用`dust_creater`的`generate`方法在指定父节点的指定位置生成灰尘
+
+<img src="assets/image-20241007214657980.png" alt="image-20241007214657980" style="zoom:50%;" />
+
+
+
+在退出run状态时,调用灰尘的`free_defeered`方法,等待当前灰尘播放完动画后自我释放
+
+<img src="assets/image-20241007214436440.png" alt="image-20241007214436440" style="zoom:50%;" />

@@ -14,7 +14,7 @@ var current_state: StateBase = null
 ## 当前状态运行时间
 var current_state_run_time: float = 0.0
 ## 下一状态, 仅在exit方法中有效
-var next_state: StateBase = null
+var next_state: String = ""
 ## 历史状态
 var _history_states: Array[String] = []
 
@@ -26,7 +26,7 @@ func _ready() -> void:
 		_states[state.name] = state
 	
 	if initial_state:
-		_history_states.append(initial_state.name)
+		_add_history_state(initial_state.name)
 		initial_state.enter()
 		current_state = initial_state
 
@@ -55,14 +55,13 @@ func change_state(from: StateBase, to: String) -> void:
 		print("error: 不存在状态: ", to)
 		return
 	
-	next_state = new_state
+	next_state = new_state.name
 	cs.exit()
-	next_state = null
-	_history_states.append(new_state.name)
+	next_state = ""
+	_add_history_state(new_state.name)
 	new_state.enter()
 	current_state_run_time = 0.0
 	current_state = new_state
-
 
 func start() -> void:
 	_started = true
@@ -70,3 +69,17 @@ func start() -> void:
 func stop() -> void:
 	_started = false
 	
+
+func _add_history_state(state_name: String) -> void:
+	_history_states.append(state_name)
+	if _history_states.size() > 20:
+		_history_states.remove_at(0)
+	
+
+func history_state(back: int) -> String:
+	var pos := _history_states.size() - 1 - back
+	if pos < 0:
+		print("message: 获取回退", back, "步的历史状态名失败, pos: ", pos)
+		return ""
+	else:
+		return _history_states[pos]
