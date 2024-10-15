@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://cg8stcmqfom3i"]
+
+[ext_resource type="Texture2D" uid="uid://bu11vr1xkyc37" path="res://asset/graphics/map/palm_tree_island/palm_tree/Front Palm Trees/Front Palm Bottom and Grass (32x32).png" id="1_dain5"]
+[ext_resource type="Texture2D" uid="uid://05f6k2bdbotf" path="res://asset/graphics/map/palm_tree_island/palm_tree/Front Palm Trees/Front Palm Tree Top 01.png" id="2_7ogxw"]
+[ext_resource type="Texture2D" uid="uid://7pmwqpmq07cj" path="res://asset/graphics/map/palm_tree_island/palm_tree/Front Palm Trees/Front Palm Tree Top 02.png" id="3_li7gf"]
+[ext_resource type="Texture2D" uid="uid://dpdwodr6hpl5k" path="res://asset/graphics/map/palm_tree_island/palm_tree/Front Palm Trees/Front Palm Tree Top 03.png" id="4_qxvva"]
+[ext_resource type="Texture2D" uid="uid://dk0pr8iybv18k" path="res://asset/graphics/map/palm_tree_island/palm_tree/Front Palm Trees/Front Palm Tree Top 04.png" id="5_u5fp6"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qtdoy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_7ogxw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_li7gf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_qxvva")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_u5fp6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="FrontLeftPalmTree" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_dain5")
+region_enabled = true
+region_rect = Rect2(37, 32, 46, 22)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(19, -27)
+sprite_frames = SubResource("SpriteFrames_qtdoy")
+autoplay = "default"
+frame = 3
+frame_progress = 0.718947

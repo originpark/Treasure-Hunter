@@ -14,8 +14,11 @@ func enter() -> void:
 func physics_update(delta: float) -> void:
 	if character.expect_direction == 0:
 		transition_to("CaptainIdle")
+		return 
 	if character.input_jump and character.is_on_floor():
 		transition_to("CaptainJump")
+		return 
+		
 	can_generate_dust = true if state_machine.current_state_run_time > dust_wait_time else false
 	if can_generate_dust and not is_creating_dust:
 		is_creating_dust = true
@@ -29,6 +32,3 @@ func exit() -> void:
 			run_dust.free_deferred()
 	can_generate_dust = false
 	is_creating_dust = false
-
-
-	

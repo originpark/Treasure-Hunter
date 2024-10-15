@@ -47,8 +47,8 @@ func change_state(from: StateBase, to: String) -> void:
 	current_state = null
 	
 	if cs != from:
-		print("error: current_state与from不一致, from: ", from, " current_state: ", cs)
-		return
+		print("warning: current_state与from不一致, from: ", from, " current_state: ", cs)
+		#return
 	
 	var new_state: StateBase = _states.get(to)
 	if !new_state:

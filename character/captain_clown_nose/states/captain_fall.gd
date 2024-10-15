@@ -19,3 +19,4 @@ func update(delta: float) -> void:
 func physics_update(delta: float) -> void:
 	if character.is_on_floor():
 		transition_to("CaptainIdle")
+		return

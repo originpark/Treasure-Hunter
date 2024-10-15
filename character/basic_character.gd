@@ -10,6 +10,8 @@ extends CharacterBody2D
 @export var state_machine: StateMachine
 ## 动画控制器
 @export var animation_player: AnimationPlayer
+## 对话气泡生成的位置
+@export var bubble_marker: Marker2D
 
 ## 默认重力
 var default_gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -33,15 +35,17 @@ func _ready() -> void:
 	state_machine.start()
 	
 func _physics_process(delta: float) -> void:
+	# 承受重力
 	_take_gravity(delta)
 	
+	# 控制是否为玩家操控的角色
 	if not input_lock:
 		check_input()
 	
+	# 控制水平移动(除了idle以外的任何状态都可以随时水平移动,因此放在basic_character里)
 	velocity.x = current_move_speed * (expect_direction / 1.0)
 	
 	move_and_slide()
-	
 
 func check_input() -> void:
 	basic_movement_input_check()

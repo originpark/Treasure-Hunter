@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="DialogueList" load_steps=8 format=3 uid="uid://iriolugta38b"]
+
+[ext_resource type="Script" path="res://system/dialogue/dialogue_list.gd" id="1_5bfe6"]
+[ext_resource type="Script" path="res://system/dialogue/dialogue.gd" id="2_nyq2p"]
+
+[sub_resource type="Resource" id="Resource_nqil5"]
+script = ExtResource("2_nyq2p")
+actor_id = 0
+content = "hi!"
+
+[sub_resource type="Resource" id="Resource_cmbim"]
+script = ExtResource("2_nyq2p")
+actor_id = 0
+content = "你们好"
+
+[sub_resource type="Resource" id="Resource_78h0s"]
+script = ExtResource("2_nyq2p")
+actor_id = 0
+content = "我是小丑鼻子啦啦啦"
+
+[sub_resource type="Resource" id="Resource_0s178"]
+script = ExtResource("2_nyq2p")
+actor_id = 0
+content = "我现在正在测试我的对话系统是否正常运行"
+
+[sub_resource type="Resource" id="Resource_ssc76"]
+script = ExtResource("2_nyq2p")
+actor_id = 0
+content = "这是一句很长很长的话这是一句很长很长的话这是一句很长很长的话这是一句很长很长的话这是一句很长很长的话这是一句很长很长的话这是一句很长很长的话这是一句很长很长的话这是一句很长很长的话"
+
+[resource]
+script = ExtResource("1_5bfe6")
+value = Array[ExtResource("2_nyq2p")]([SubResource("Resource_nqil5"), SubResource("Resource_cmbim"), SubResource("Resource_78h0s"), SubResource("Resource_0s178"), SubResource("Resource_ssc76")])

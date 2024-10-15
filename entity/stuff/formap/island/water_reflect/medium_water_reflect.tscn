@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://d1vo2p5ea3onm"]
+
+[ext_resource type="Texture2D" uid="uid://gh3jt67tcqda" path="res://asset/graphics/map/palm_tree_island/Background/Water Reflect Medium 01.png" id="1_d0lek"]
+[ext_resource type="Texture2D" uid="uid://chvh7xwcvdtm" path="res://asset/graphics/map/palm_tree_island/Background/Water Reflect Medium 02.png" id="2_iyye3"]
+[ext_resource type="Texture2D" uid="uid://jio7ll2xlbwc" path="res://asset/graphics/map/palm_tree_island/Background/Water Reflect Medium 03.png" id="3_r10mk"]
+[ext_resource type="Texture2D" uid="uid://1ci63x0tfnjc" path="res://asset/graphics/map/palm_tree_island/Background/Water Reflect Medium 04.png" id="4_cvlh1"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dhahr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_d0lek")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_iyye3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_r10mk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_cvlh1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="MediumWaterReflect" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_dhahr")
+autoplay = "default"
+frame_progress = 0.99721

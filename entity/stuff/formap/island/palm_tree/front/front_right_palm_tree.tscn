@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://duhwxyndlhe41"]
+
+[ext_resource type="Texture2D" uid="uid://bu11vr1xkyc37" path="res://asset/graphics/map/palm_tree_island/palm_tree/Front Palm Trees/Front Palm Bottom and Grass (32x32).png" id="1_kdu2b"]
+[ext_resource type="SpriteFrames" uid="uid://d0q5glhfd4mil" path="res://resource/sprite_frames/front_left_palm_tree.tres" id="2_cc0q7"]
+
+[node name="FrontRightPalmTree" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_kdu2b")
+region_enabled = true
+region_rect = Rect2(44, 0, 48, 21)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-20, -26)
+sprite_frames = ExtResource("2_cc0q7")
+autoplay = "default"

@@ -21,3 +21,4 @@ func update(delta: float) -> void:
 func physics_update(delta: float) -> void:
 	if character.velocity.y > 0.0:
 		transition_to("CaptainFall")
+		return
