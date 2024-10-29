@@ -1,0 +1,45 @@
+[gd_scene load_steps=9 format=3 uid="uid://cqlb2v6xl3mt0"]
+
+[ext_resource type="Texture2D" uid="uid://co7bxrytgo8b0" path="res://asset/graphics/character/Cannon/Cannon Fire Effect/1.png" id="1_okvom"]
+[ext_resource type="Script" path="res://entity/stuff/dust/dust.gd" id="1_yskfl"]
+[ext_resource type="Texture2D" uid="uid://b1o7s2qpeyqvt" path="res://asset/graphics/character/Cannon/Cannon Fire Effect/2.png" id="2_t08dg"]
+[ext_resource type="Texture2D" uid="uid://cioidw2gjhsg5" path="res://asset/graphics/character/Cannon/Cannon Fire Effect/3.png" id="3_123m8"]
+[ext_resource type="Texture2D" uid="uid://dtt788p1lwbgi" path="res://asset/graphics/character/Cannon/Cannon Fire Effect/4.png" id="4_rchc8"]
+[ext_resource type="Texture2D" uid="uid://qaxol3umpp52" path="res://asset/graphics/character/Cannon/Cannon Fire Effect/5.png" id="5_rcw4r"]
+[ext_resource type="Texture2D" uid="uid://ckr6m6hlwx7wq" path="res://asset/graphics/character/Cannon/Cannon Fire Effect/6.png" id="6_q8ynw"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mlpfc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_okvom")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_t08dg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_123m8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_rchc8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_rcw4r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_q8ynw")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="CannonDust" type="Node2D"]
+script = ExtResource("1_yskfl")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-10, 0)
+sprite_frames = SubResource("SpriteFrames_mlpfc")
+autoplay = "default"
+frame = 5
+frame_progress = 1.0

@@ -1,0 +1,340 @@
+[gd_scene load_steps=28 format=3 uid="uid://clad2lnvf4ows"]
+
+[ext_resource type="Texture2D" uid="uid://dkxu85yvrr2nu" path="res://asset/graphics/character/Cannon/Cannon Fire/1.png" id="1_4r4ky"]
+[ext_resource type="Script" path="res://character/cannon/cannon.gd" id="1_kjxjv"]
+[ext_resource type="Texture2D" uid="uid://dr4322bio7mc1" path="res://asset/graphics/character/Cannon/Cannon Idle/1.png" id="1_m8j88"]
+[ext_resource type="Texture2D" uid="uid://bi6exjhs31fg7" path="res://asset/graphics/character/Cannon/Cannon Fire/2.png" id="2_y6r8p"]
+[ext_resource type="Texture2D" uid="uid://cqa2gbwccqro5" path="res://asset/graphics/character/Cannon/Cannon Fire/3.png" id="3_llyf6"]
+[ext_resource type="Texture2D" uid="uid://kqkk457jtwvi" path="res://asset/graphics/character/Cannon/Cannon Fire/4.png" id="4_pdvil"]
+[ext_resource type="Texture2D" uid="uid://cst8w6fw5cpej" path="res://asset/graphics/character/Cannon/Cannon Fire/5.png" id="5_pvlf2"]
+[ext_resource type="Texture2D" uid="uid://crwtfs3ajk4vs" path="res://asset/graphics/character/Cannon/Cannon Fire/6.png" id="6_ig8m7"]
+[ext_resource type="Script" path="res://component/state_machine/state_machine.gd" id="8_cjgvj"]
+[ext_resource type="Texture2D" uid="uid://co7bxrytgo8b0" path="res://asset/graphics/character/Cannon/Cannon Fire Effect/1.png" id="9_pe1gj"]
+[ext_resource type="Script" path="res://character/cannon/state/cannon_idle.gd" id="10_8cfh2"]
+[ext_resource type="Script" path="res://component/direction/direction.gd" id="10_8p1cr"]
+[ext_resource type="Texture2D" uid="uid://b1o7s2qpeyqvt" path="res://asset/graphics/character/Cannon/Cannon Fire Effect/2.png" id="10_d0o06"]
+[ext_resource type="Script" path="res://character/cannon/state/cannon_fire.gd" id="11_2cu2w"]
+[ext_resource type="Script" path="res://component/stats/stats.gd" id="11_fm4co"]
+[ext_resource type="Texture2D" uid="uid://cioidw2gjhsg5" path="res://asset/graphics/character/Cannon/Cannon Fire Effect/3.png" id="11_ldioh"]
+[ext_resource type="Texture2D" uid="uid://dtt788p1lwbgi" path="res://asset/graphics/character/Cannon/Cannon Fire Effect/4.png" id="12_4jlnk"]
+[ext_resource type="Texture2D" uid="uid://qaxol3umpp52" path="res://asset/graphics/character/Cannon/Cannon Fire Effect/5.png" id="13_dkvfl"]
+[ext_resource type="Texture2D" uid="uid://ckr6m6hlwx7wq" path="res://asset/graphics/character/Cannon/Cannon Fire Effect/6.png" id="14_465x6"]
+[ext_resource type="Script" path="res://character/cannon/state/cannon_look.gd" id="18_nnguh"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ehrej"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_4r4ky")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_y6r8p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_llyf6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_pdvil")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_pvlf2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ig8m7")
+}],
+"loop": false,
+"name": &"fire",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_m8j88")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}]
+
+[sub_resource type="Animation" id="Animation_0lart"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D2:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"default"]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimatedSprite2D2:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AnimatedSprite2D2:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_5r564"]
+resource_name = "fire"
+length = 0.9
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"fire"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D2:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"default"]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimatedSprite2D2:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AnimatedSprite2D2:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.3, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../StateMachine/CannonFire")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"ball"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_tj1kn"]
+resource_name = "idle"
+length = 0.1
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ftjay"]
+_data = {
+"RESET": SubResource("Animation_0lart"),
+"fire": SubResource("Animation_5r564"),
+"idle": SubResource("Animation_tj1kn")
+}
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lyhi7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_pe1gj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_d0o06")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_ldioh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_4jlnk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_dkvfl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_465x6")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uvhi6"]
+
+[node name="Cannon" type="CharacterBody2D" node_paths=PackedStringArray("graphics", "direction", "state_machine", "stats", "animation_player", "bubble_marker")]
+collision_layer = 32
+collision_mask = 4
+script = ExtResource("1_kjxjv")
+graphics = NodePath("Graphics")
+direction = NodePath("Direction")
+state_machine = NodePath("StateMachine")
+stats = NodePath("Stats")
+animation_player = NodePath("Graphics/AnimationPlayer")
+bubble_marker = NodePath("BubbleMarker")
+
+[node name="Graphics" type="Node2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Graphics"]
+position = Vector2(0, -13)
+sprite_frames = SubResource("SpriteFrames_ehrej")
+animation = &"idle"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Graphics"]
+libraries = {
+"": SubResource("AnimationLibrary_ftjay")
+}
+
+[node name="RayCast2D" type="RayCast2D" parent="Graphics"]
+position = Vector2(0, -10)
+target_position = Vector2(-300, 0)
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Graphics"]
+visible = false
+position = Vector2(-20, -13)
+sprite_frames = SubResource("SpriteFrames_lyhi7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -11)
+shape = SubResource("RectangleShape2D_uvhi6")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("8_cjgvj")
+initial_state = NodePath("CannonIdle")
+
+[node name="CannonIdle" type="Node" parent="StateMachine"]
+script = ExtResource("10_8cfh2")
+
+[node name="CannonFire" type="Node" parent="StateMachine"]
+script = ExtResource("11_2cu2w")
+
+[node name="CannonLook" type="Node" parent="StateMachine"]
+script = ExtResource("18_nnguh")
+
+[node name="Direction" type="Node" parent="." node_paths=PackedStringArray("Graphics")]
+script = ExtResource("10_8p1cr")
+Graphics = NodePath("../Graphics")
+
+[node name="BubbleMarker" type="Marker2D" parent="."]
+position = Vector2(0, -34)
+
+[node name="Stats" type="Node" parent="."]
+script = ExtResource("11_fm4co")
+MAX_HP = 100.0
+HP = 100.0
+STR = 20.0
+
+[node name="ShotMarker" type="Marker2D" parent="."]
+position = Vector2(-12, -13)

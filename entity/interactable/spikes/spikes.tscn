@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://bqvahc8hn7tef"]
+
+[ext_resource type="Texture2D" uid="uid://co2nn3jphinqm" path="res://asset/graphics/map/palm_tree_island/Spikes/Spikes.png" id="1_bpf7f"]
+[ext_resource type="Script" path="res://entity/interactable/spikes/spikes.gd" id="2_4k6yq"]
+[ext_resource type="Script" path="res://component/interactable/interactable.gd" id="2_xspe7"]
+[ext_resource type="Script" path="res://component/stats/stats.gd" id="4_71gtg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5v5ye"]
+size = Vector2(29, 12)
+
+[node name="Spikes" type="Sprite2D"]
+position = Vector2(0, -16)
+texture = ExtResource("1_bpf7f")
+script = ExtResource("2_4k6yq")
+
+[node name="Interactable" type="Node2D" parent="." node_paths=PackedStringArray("interact_area")]
+script = ExtResource("2_xspe7")
+interact_area = NodePath("../Area2D")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.5, 10)
+shape = SubResource("RectangleShape2D_5v5ye")
+
+[node name="Stats" type="Node" parent="."]
+script = ExtResource("4_71gtg")
+STR = 6.0

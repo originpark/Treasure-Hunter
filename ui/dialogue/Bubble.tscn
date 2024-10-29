@@ -12,7 +12,6 @@ font_color = Color(0, 0, 0, 1)
 offset_top = -15.0
 offset_right = 12.0
 script = ExtResource("1_tmicp")
-text = "123123123s啊实打实大苏打dfsdfsdfasdasdasdasasdasdasdasdasdasdasda"
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 custom_minimum_size = Vector2(12, 11)

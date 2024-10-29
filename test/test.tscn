@@ -1,0 +1,57 @@
+[gd_scene load_steps=11 format=3 uid="uid://cxt1h54od5bm2"]
+
+[ext_resource type="Texture2D" uid="uid://ibi74m38fulg" path="res://asset/graphics/character/captain_clown_nose/without_sword/01-Idle/Idle 01.png" id="1_3oynk"]
+[ext_resource type="Shader" path="res://resource/shader/teleport.gdshader" id="1_k5deu"]
+[ext_resource type="Script" path="res://test/test.gd" id="1_p4va4"]
+[ext_resource type="Texture2D" uid="uid://btdk3u1tsximf" path="res://asset/graphics/character/captain_clown_nose/without_sword/01-Idle/Idle 02.png" id="2_80y7u"]
+[ext_resource type="Texture2D" uid="uid://cj6ww3q2wnikh" path="res://asset/graphics/character/captain_clown_nose/without_sword/01-Idle/Idle 03.png" id="3_6gfbb"]
+[ext_resource type="Texture2D" uid="uid://dc68ekuisj8cb" path="res://asset/graphics/character/captain_clown_nose/without_sword/01-Idle/Idle 04.png" id="4_fiwex"]
+[ext_resource type="Texture2D" uid="uid://bratj5ntglw51" path="res://asset/graphics/character/captain_clown_nose/without_sword/01-Idle/Idle 05.png" id="5_iedf8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gwwpu"]
+shader = ExtResource("1_k5deu")
+shader_parameter/progress = 0.0
+shader_parameter/noise_desnity = 60.0
+shader_parameter/beam_size = 0.01
+shader_parameter/color = Color(0, 1.02, 1.2, 1)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_odf1n"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_3oynk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_80y7u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_6gfbb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_fiwex")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_iedf8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="Environment" id="Environment_kdtum"]
+background_mode = 3
+glow_enabled = true
+glow_blend_mode = 1
+
+[node name="Test" type="Node2D"]
+scale = Vector2(3, 3)
+script = ExtResource("1_p4va4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_gwwpu")
+position = Vector2(61.3333, 35.6667)
+sprite_frames = SubResource("SpriteFrames_odf1n")
+autoplay = "default"
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="AnimatedSprite2D"]
+environment = SubResource("Environment_kdtum")

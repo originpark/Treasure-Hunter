@@ -1,9 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://cpnggtmugkwmw"]
+[gd_scene load_steps=4 format=3 uid="uid://cpnggtmugkwmw"]
 
 [ext_resource type="Texture2D" uid="uid://bu11vr1xkyc37" path="res://asset/graphics/map/palm_tree_island/palm_tree/Front Palm Trees/Front Palm Bottom and Grass (32x32).png" id="1_sfch6"]
 [ext_resource type="SpriteFrames" uid="uid://d0q5glhfd4mil" path="res://resource/sprite_frames/front_left_palm_tree.tres" id="2_xc6yh"]
 
-[node name="FrontPalmTree" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iq86e"]
+size = Vector2(33, 2)
+
+[node name="FrontPalmTree" type="StaticBody2D"]
+collision_layer = 16
+collision_mask = 11
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_sfch6")
@@ -13,3 +18,9 @@ region_rect = Rect2(11, 0, 10, 60)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1, -46)
 sprite_frames = ExtResource("2_xc6yh")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -60)
+shape = SubResource("RectangleShape2D_iq86e")
+one_way_collision = true

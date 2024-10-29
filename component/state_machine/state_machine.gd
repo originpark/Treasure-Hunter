@@ -22,7 +22,8 @@ var _history_states: Array[String] = []
 func _ready() -> void:
 	for state: StateBase in get_children():
 		state.state_machine = self
-		state.character = owner
+		if owner is BasicCharacter:
+			state.character = owner
 		_states[state.name] = state
 	
 	if initial_state:
@@ -43,6 +44,7 @@ func _process(delta: float) -> void:
 		
 
 func change_state(from: StateBase, to: String) -> void:
+	#print(from.name, " -> ", to)
 	var cs: StateBase = current_state
 	current_state = null
 	
@@ -76,10 +78,11 @@ func _add_history_state(state_name: String) -> void:
 		_history_states.remove_at(0)
 	
 
+## 获取历史状态, 参数为回退的步数, 例如history_state(1)表示上一个状态
 func history_state(back: int) -> String:
 	var pos := _history_states.size() - 1 - back
 	if pos < 0:
-		print("message: 获取回退", back, "步的历史状态名失败, pos: ", pos)
+		#print("message: 获取回退", back, "步的历史状态名失败, pos: ", pos)
 		return ""
 	else:
 		return _history_states[pos]

@@ -1,33 +1,124 @@
-[gd_scene load_steps=8 format=4 uid="uid://cebvqe0gahxa3"]
+[gd_scene load_steps=17 format=4 uid="uid://cebvqe0gahxa3"]
 
 [ext_resource type="TileSet" uid="uid://b0tpnxs7rp2hx" path="res://resource/tileset/palm_tree_island.tres" id="1_u2ak8"]
 [ext_resource type="Script" path="res://scene/palm_tree_island/pathway_in_front_of_the_door/path_way_in_front_of_the_door.gd" id="1_wpn5q"]
 [ext_resource type="PackedScene" uid="uid://bqh26ieiblwbh" path="res://character/captain_clown_nose/captain_clown_nose.tscn" id="2_fvgff"]
 [ext_resource type="PackedScene" uid="uid://boyenb2ucg75d" path="res://scene/common/palm_tree_island/palm_tree_island_background.tscn" id="2_qn7pc"]
 [ext_resource type="PackedScene" uid="uid://d04f1qkudsvle" path="res://component/camera/camera.tscn" id="3_d5q63"]
+[ext_resource type="PackedScene" uid="uid://bk0w3lpefdbn8" path="res://entity/stuff/formap/island/palm_tree/back/back_left_palm_tree.tscn" id="4_nwoun"]
+[ext_resource type="PackedScene" uid="uid://th5qal25exiy" path="res://entity/stuff/formap/island/palm_tree/back/back_palm_tree.tscn" id="5_ctmpv"]
 [ext_resource type="Script" path="res://system/dialogue/dialogue_controller.gd" id="5_h3h45"]
 [ext_resource type="Resource" uid="uid://iriolugta38b" path="res://resource/story/story01.tres" id="6_wg8vj"]
+[ext_resource type="PackedScene" uid="uid://cpnggtmugkwmw" path="res://entity/stuff/formap/island/palm_tree/front/front_palm_tree.tscn" id="7_ownse"]
+[ext_resource type="PackedScene" uid="uid://bqvahc8hn7tef" path="res://entity/interactable/spikes/spikes.tscn" id="8_gy4n1"]
+[ext_resource type="PackedScene" uid="uid://b7m2hnqo80efp" path="res://entity/interactable/box/box.tscn" id="9_46to1"]
+[ext_resource type="PackedScene" uid="uid://bdjo1g1runp4v" path="res://item/gold_coin/gold_coin.tscn" id="14_jcc4q"]
+[ext_resource type="PackedScene" uid="uid://c8n223q6xep48" path="res://entity/interactable/Barrel/barrel.tscn" id="15_o57xl"]
+[ext_resource type="PackedScene" uid="uid://clad2lnvf4ows" path="res://character/cannon/cannon.tscn" id="15_qcl2j"]
+[ext_resource type="PackedScene" uid="uid://dcoax2coga3ys" path="res://character/bomb_guy/bomb_guy.tscn" id="16_orvt5"]
 
-[node name="PathWayInFrontOfTheDoor" type="Node2D"]
+[node name="PathWayInFrontOfTheDoor" type="Node2D" node_paths=PackedStringArray("tile_map")]
 script = ExtResource("1_wpn5q")
+tile_map = NodePath("Map/TileMapLayer/GroundMapLayer")
 
 [node name="Map" type="Node2D" parent="."]
 
 [node name="TileMapLayer" type="Node2D" parent="Map"]
 
 [node name="GroundMapLayer" type="TileMapLayer" parent="Map/TileMapLayer"]
-tile_map_data = PackedByteArray("AAD+/wYAAQABAAAAAAD//wYAAQABAAAAAAAAAAYAAQABAAAAAAABAAYAAQABAAAAAAACAAYAAQABAAAAAAADAAYAAQABAAAAAAD9/wYAAQABAAAAAAD8/wYAAQAGAAEAAAAEAAYAAQAHAAEAAAAEAAUAAQAAAAAAAAAFAAUAAQABAAAAAAAGAAUAAQABAAAAAAAHAAUAAQABAAAAAAAIAAUAAQABAAAAAAAJAAUAAQABAAAAAAAKAAUAAQABAAAAAAALAAUAAQABAAAAAAAMAAUAAQABAAAAAAANAAUAAQABAAAAAAAOAAUAAQABAAAAAAAPAAUAAQABAAAAAAAQAAUAAQABAAAAAAD8/wUAAQACAAEAAAD8/wQAAQACAAEAAAD8/wMAAQACAAEAAAD8/wIAAQACAAEAAAD8/wEAAQACAAEAAAD8/wAAAQACAAEAAAD8////AQACAAEAAAD8//7/AQACAAEAAAD8//3/AQAGAAAAAAD9//3/AQABAAIAAAD+//3/AQABAAIAAAD///3/AQABAAIAAAAAAP3/AQABAAIAAAABAP3/AQABAAIAAAACAP3/AQABAAIAAAADAP3/AQABAAIAAAAEAP3/AQABAAIAAAAFAP3/AQABAAIAAAAGAP3/AQABAAIAAAAHAP3/AQABAAIAAAAIAP7/AQAEAAIAAAAIAP3/AQAKAAEAAAAJAP3/AQABAAIAAAAKAP3/AQABAAIAAAALAP3/AQABAAIAAAAMAP3/AQABAAIAAAANAP3/AQABAAIAAAAOAP3/AQABAAIAAAAPAP3/AQABAAIAAAAQAP3/AQABAAIAAAARAP3/AQABAAIAAAASAP3/AQAHAAAAAAASAP7/AQAAAAEAAAASAP//AQAAAAEAAAASAAAAAQAAAAEAAAASAAEAAQAAAAEAAAASAAIAAQAAAAEAAAASAAMAAQAAAAEAAAASAAQAAQAAAAEAAAARAAUAAQABAAAAAAASAAUAAQAHAAEAAAAFAAYAAQABAAEAAAAGAAYAAQABAAEAAAAHAAYAAQABAAEAAAAIAAYAAQABAAEAAAAJAAYAAQABAAEAAAAKAAYAAQABAAEAAAALAAYAAQABAAEAAAAMAAYAAQABAAEAAAANAAYAAQABAAEAAAAOAAYAAQABAAEAAAAPAAYAAQABAAEAAAAQAAYAAQABAAEAAAARAAYAAQABAAEAAAASAAYAAQABAAEAAAA=")
+tile_map_data = PackedByteArray("AAD+/wYAAQABAAAAAAD//wYAAQABAAAAAAAAAAYAAQABAAAAAAABAAYAAQABAAAAAAACAAYAAQABAAAAAAADAAYAAQABAAAAAAD9/wYAAQABAAAAAAD8/wYAAQABAAAAAAAEAAYAAQABAAAAAAD8/wMAAQAEAAIAAAD8/wIAAQAEAAEAAAD8/wEAAQAEAAEAAAD8/wAAAQAEAAEAAAD8////AQAEAAEAAAD9//3/AQABAAIAAAD+//3/AQABAAIAAAD///3/AQABAAIAAAAAAP3/AQABAAIAAAABAP3/AQABAAIAAAACAP3/AQABAAIAAAADAP3/AQABAAIAAAAEAP3/AQABAAIAAAAFAP3/AQABAAIAAAAGAP3/AQABAAIAAAAHAP3/AQABAAIAAAAIAP7/AQAEAAIAAAAIAP3/AQAKAAEAAAAJAP3/AQABAAIAAAAKAP3/AQABAAIAAAALAP3/AQABAAIAAAAMAP3/AQABAAIAAAANAP3/AQABAAIAAAAOAP3/AQABAAIAAAAPAP3/AQABAAIAAAAQAP3/AQABAAIAAAARAP3/AQABAAIAAAASAP3/AQABAAIAAAAFAAYAAQAHAAEAAAAGAAYAAQABAAEAAAAHAAYAAQABAAEAAAAIAAYAAQABAAEAAAAJAAYAAQABAAEAAAAKAAYAAQAGAAEAAAALAAYAAQABAAAAAAAMAAYAAQABAAAAAAANAAYAAQABAAAAAAAOAAYAAQAHAAEAAAAPAAYAAQABAAEAAAAQAAYAAQABAAEAAAARAAYAAQABAAEAAAASAAYAAQABAAEAAAAFAAQAAQAAAAAAAAAKAAQAAQACAAAAAAAFAAUAAQAAAAEAAAAKAAUAAQACAAEAAAAOAAUAAQAAAAEAAAAPAAUAAQABAAEAAAAQAAUAAQABAAEAAAARAAUAAQABAAEAAAASAAUAAQABAAEAAAAOAAQAAQAAAAAAAAAPAAQAAQABAAAAAAAQAAQAAQABAAAAAAARAAQAAQABAAAAAAD7/wYAAQABAAAAAAD6/wYAAQABAAAAAAD5/wYAAQABAAAAAAD4/wYAAQABAAAAAAD3/wYAAQABAAAAAAD2/wUAAQACAAAAAAD2/wYAAQAGAAEAAAD1/wYAAQABAAEAAAD0/wYAAQABAAEAAAD1//3/AQABAAIAAAD2//3/AQABAAIAAAD3//3/AQABAAIAAAD4//3/AQABAAIAAAD5//3/AQABAAIAAAD6//3/AQABAAIAAAD7//3/AQABAAIAAAD8//7/AQAEAAEAAAD8//3/AQAKAAEAAAD1/wUAAQABAAAAAAD0/wUAAQABAAAAAADz/wUAAQABAAAAAADz/wYAAQABAAEAAADy/wYAAQABAAEAAADx/wYAAQABAAEAAADy/wUAAQABAAAAAADx/wUAAQAGAAEAAADx/wQAAQACAAEAAADx/wMAAQACAAEAAADx/wIAAQACAAEAAADx/wEAAQACAAEAAADx/wAAAQACAAEAAADx////AQACAAEAAADx//7/AQACAAEAAADx//3/AQAGAAAAAADy//3/AQABAAIAAADz//3/AQABAAIAAAD0//3/AQABAAIAAAAJAAUAAQABAAEAAAAIAAUAAQABAAEAAAAHAAUAAQABAAEAAAAGAAUAAQABAAEAAAAJAAQAAQABAAAAAAAIAAQAAQABAAAAAAAHAAQAAQABAAAAAAAGAAQAAQABAAAAAAATAP3/AQABAAIAAAAUAP3/AQABAAIAAAAVAP3/AQABAAIAAAAWAP3/AQABAAIAAAAXAP3/AQABAAIAAAAYAP3/AQABAAIAAAAZAP3/AQABAAIAAAAaAP3/AQABAAIAAAAbAP3/AQABAAIAAAAcAP3/AQABAAIAAAAdAP3/AQABAAIAAAAeAP3/AQABAAIAAAAfAP3/AQABAAIAAAAgAP3/AQAHAAAAAAATAAYAAQABAAEAAAAUAAYAAQABAAEAAAAVAAYAAQABAAEAAAAWAAYAAQABAAEAAAAXAAYAAQABAAEAAAAYAAYAAQABAAEAAAAZAAYAAQABAAEAAAAaAAYAAQABAAEAAAAbAAYAAQABAAEAAAAcAAYAAQABAAEAAAAdAAYAAQABAAEAAAAeAAYAAQABAAEAAAAfAAYAAQABAAEAAAAgAAYAAQABAAEAAAATAAUAAQABAAEAAAAUAAUAAQABAAEAAAAVAAUAAQABAAEAAAAWAAUAAQABAAEAAAAXAAUAAQABAAEAAAAYAAUAAQABAAEAAAAZAAUAAQABAAEAAAAaAAUAAQABAAEAAAAbAAUAAQABAAEAAAAcAAUAAQABAAEAAAAdAAUAAQABAAEAAAAeAAUAAQABAAEAAAAfAAUAAQABAAEAAAAgAAUAAQABAAEAAAATAAQAAQABAAEAAAAUAAQAAQABAAEAAAAVAAQAAQABAAEAAAAWAAQAAQABAAEAAAAXAAQAAQABAAEAAAAYAAQAAQABAAEAAAASAAMAAQAAAAAAAAASAAQAAQAHAAEAAAATAAMAAQABAAAAAAAUAAMAAQABAAAAAAAVAAMAAQABAAAAAAAWAAMAAQABAAAAAAAXAAMAAQABAAAAAAAYAAMAAQABAAAAAAAZAAMAAQABAAAAAAAZAAQAAQABAAEAAAAaAAMAAQABAAAAAAAbAAMAAQABAAAAAAAcAAMAAQABAAAAAAAdAAMAAQABAAAAAAAeAAMAAQABAAAAAAAfAAMAAQABAAAAAAAgAAMAAQAHAAEAAAAaAAQAAQABAAEAAAAbAAQAAQABAAEAAAAcAAQAAQABAAEAAAAdAAQAAQABAAEAAAAeAAQAAQABAAEAAAAfAAQAAQABAAEAAAAgAAQAAQABAAEAAAAgAP7/AQAAAAEAAAAgAP//AQAAAAEAAAAgAAAAAQAAAAEAAAAgAAEAAQAAAAEAAAAgAAIAAQAAAAEAAAA=")
 tile_set = ExtResource("1_u2ak8")
 
 [node name="PalmTreeIslandBackGround" parent="Map" instance=ExtResource("2_qn7pc")]
 
-[node name="CaptainClownNose" parent="." instance=ExtResource("2_fvgff")]
-position = Vector2(-27, 192)
+[node name="BackTreeParallaxBackground" type="ParallaxBackground" parent="Map"]
+layer = -99
 
-[node name="Camera" parent="CaptainClownNose" node_paths=PackedStringArray("tilemap_layer") instance=ExtResource("3_d5q63")]
-tilemap_layer = NodePath("../../Map/TileMapLayer/GroundMapLayer")
+[node name="BackStaticTreeParallaxLayer" type="ParallaxLayer" parent="Map/BackTreeParallaxBackground"]
+
+[node name="BackLeftPalmTree" parent="Map/BackTreeParallaxBackground/BackStaticTreeParallaxLayer" instance=ExtResource("4_nwoun")]
+position = Vector2(-437, 93)
+
+[node name="BackTreeParallaxLayer" type="ParallaxLayer" parent="Map/BackTreeParallaxBackground"]
+motion_scale = Vector2(0.9, 0.9)
+
+[node name="BackPalmTree" parent="Map/BackTreeParallaxBackground/BackTreeParallaxLayer" instance=ExtResource("5_ctmpv")]
+position = Vector2(-313, 129)
+
+[node name="BackPalmTree2" parent="Map/BackTreeParallaxBackground/BackTreeParallaxLayer" instance=ExtResource("5_ctmpv")]
+position = Vector2(82, 163)
+
+[node name="FrontTreeParallaxLayer" type="Node2D" parent="Map"]
+z_index = 2
+
+[node name="FrontPalmTree" parent="Map/FrontTreeParallaxLayer" instance=ExtResource("7_ownse")]
+position = Vector2(-180, 189)
+
+[node name="FrontPalmTree2" parent="Map/FrontTreeParallaxLayer" instance=ExtResource("7_ownse")]
+position = Vector2(224, 137)
+
+[node name="FrontPalmTree3" parent="Map/FrontTreeParallaxLayer" instance=ExtResource("7_ownse")]
+z_index = 1
+position = Vector2(401, 215)
+
+[node name="Spikes" type="Node2D" parent="Map"]
+
+[node name="Spikes" parent="Map/Spikes" instance=ExtResource("8_gy4n1")]
+position = Vector2(400, 176)
+
+[node name="Spikes2" parent="Map/Spikes" instance=ExtResource("8_gy4n1")]
+position = Vector2(432, 176)
+
+[node name="Spikes3" parent="Map/Spikes" instance=ExtResource("8_gy4n1")]
+position = Vector2(367, 176)
+
+[node name="Spikes4" parent="Map/Spikes" instance=ExtResource("8_gy4n1")]
+position = Vector2(-65, 177)
+
+[node name="Spikes5" parent="Map/Spikes" instance=ExtResource("8_gy4n1")]
+position = Vector2(-34, 177)
+
+[node name="Spikes6" parent="Map/Spikes" instance=ExtResource("8_gy4n1")]
+position = Vector2(-2, 177)
 
 [node name="DemoDialogue" type="Node" parent="." node_paths=PackedStringArray("actor_list")]
 script = ExtResource("5_h3h45")
 dialogue_list = ExtResource("6_wg8vj")
-actor_list = [NodePath("../CaptainClownNose")]
+actor_list = [NodePath("../CaptainClownNose"), NodePath("../BombGuy")]
+
+[node name="CaptainClownNose" parent="." instance=ExtResource("2_fvgff")]
+z_index = 1
+position = Vector2(-104, 193)
+
+[node name="Camera" parent="CaptainClownNose" node_paths=PackedStringArray("tilemap_layer") instance=ExtResource("3_d5q63")]
+tilemap_layer = NodePath("../../Map/TileMapLayer/GroundMapLayer")
+
+[node name="Box" parent="." instance=ExtResource("9_46to1")]
+position = Vector2(-353, 161)
+
+[node name="GoldCoin" parent="." instance=ExtResource("14_jcc4q")]
+position = Vector2(-182, 83)
+
+[node name="GoldCoin2" parent="." instance=ExtResource("14_jcc4q")]
+position = Vector2(225, -6)
+
+[node name="GoldCoin3" parent="." instance=ExtResource("14_jcc4q")]
+position = Vector2(224, 47)
+
+[node name="GoldCoin4" parent="." instance=ExtResource("14_jcc4q")]
+position = Vector2(133, -7)
+
+[node name="GoldCoin5" parent="." instance=ExtResource("14_jcc4q")]
+position = Vector2(84, -7)
+
+[node name="Barrel" parent="." instance=ExtResource("15_o57xl")]
+position = Vector2(459, 129)
+
+[node name="GoldCoin6" parent="." instance=ExtResource("14_jcc4q")]
+position = Vector2(363, 153)
+
+[node name="Cannon" parent="." instance=ExtResource("15_qcl2j")]
+position = Vector2(937, 97)
+
+[node name="BombGuy" parent="." instance=ExtResource("16_orvt5")]
+position = Vector2(28, 192)

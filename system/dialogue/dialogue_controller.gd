@@ -10,6 +10,7 @@ var _count: int
 var _list: Array[Dialogue]
 var _started: bool = false
 
+signal finished()
 
 func _ready() -> void:
 	_count = dialogue_list.value.size()
@@ -46,4 +47,5 @@ func start() -> void:
 func end() -> void:
 	print(name, " 对话结束")
 	_started = false
+	finished.emit()
 	queue_free()

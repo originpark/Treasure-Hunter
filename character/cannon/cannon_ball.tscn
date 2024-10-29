@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://d0qyqbioo8gnm"]
+
+[ext_resource type="Texture2D" uid="uid://bpyi5m2k3ce4w" path="res://asset/graphics/character/Cannon/Cannon Ball Idle/1.png" id="1_jllqp"]
+[ext_resource type="Script" path="res://character/cannon/cannon_ball.gd" id="1_rctpi"]
+[ext_resource type="Script" path="res://component/interactable/interactable.gd" id="2_p3be4"]
+[ext_resource type="Script" path="res://component/stats/stats.gd" id="4_65x1p"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hu47f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_jllqp")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cqnoc"]
+radius = 7.0
+
+[node name="CannonBall" type="Node2D"]
+script = ExtResource("1_rctpi")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_hu47f")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="InteractArea" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea"]
+shape = SubResource("CircleShape2D_cqnoc")
+
+[node name="Interactable" type="Node2D" parent="." node_paths=PackedStringArray("animation_sprite", "interact_area")]
+script = ExtResource("2_p3be4")
+animation_sprite = NodePath("../AnimatedSprite2D")
+interact_area = NodePath("../InteractArea")
+
+[node name="Stats" type="Node" parent="."]
+script = ExtResource("4_65x1p")
+STR = 20.0

@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://7disn22yrw07"]
+
+[ext_resource type="Texture2D" uid="uid://b54pmq1mb84xw" path="res://asset/graphics/ui/dialogue/Exclamation/Exclamation In 01.png" id="1_pa5gl"]
+[ext_resource type="Texture2D" uid="uid://dvl77dw53kr41" path="res://asset/graphics/ui/dialogue/Exclamation/Exclamation In 02.png" id="2_jnvk2"]
+[ext_resource type="Texture2D" uid="uid://bqmsein2h1sjc" path="res://asset/graphics/ui/dialogue/Exclamation/Exclamation In 03.png" id="3_pspw2"]
+[ext_resource type="Texture2D" uid="uid://b0uw8vpptaa2f" path="res://asset/graphics/ui/dialogue/Exclamation/Exclamation Out 01.png" id="4_031xu"]
+[ext_resource type="Texture2D" uid="uid://bvk677c2sihs8" path="res://asset/graphics/ui/dialogue/Exclamation/Exclamation Out 02.png" id="5_5gewk"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o6in4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_pa5gl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_jnvk2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_pspw2")
+}],
+"loop": false,
+"name": &"in",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_031xu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_5gewk")
+}],
+"loop": false,
+"name": &"out",
+"speed": 10.0
+}]
+
+[node name="Exclamation" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_o6in4")
+animation = &"out"
+autoplay = "in"

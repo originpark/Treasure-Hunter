@@ -1,0 +1,66 @@
+[gd_scene load_steps=12 format=3 uid="uid://bdjo1g1runp4v"]
+
+[ext_resource type="Script" path="res://item/gold_coin/gold_coin.gd" id="1_5un0v"]
+[ext_resource type="Texture2D" uid="uid://c2846g08jnww7" path="res://asset/graphics/item/Gold Coin/01.png" id="1_doxf5"]
+[ext_resource type="Texture2D" uid="uid://crt6inc13a2t0" path="res://asset/graphics/item/Gold Coin/02.png" id="2_wk38i"]
+[ext_resource type="Texture2D" uid="uid://35x2831wkhrk" path="res://asset/graphics/item/Gold Coin/03.png" id="3_0hu2y"]
+[ext_resource type="Texture2D" uid="uid://dci2d2kp3kj2v" path="res://asset/graphics/item/Gold Coin/04.png" id="4_u5s3h"]
+[ext_resource type="Script" path="res://component/interactable/interactable.gd" id="5_e4rad"]
+[ext_resource type="Texture2D" uid="uid://qsmnwho5mrdu" path="res://asset/graphics/item/item effect/Coin Effect/01.png" id="6_s3wyh"]
+[ext_resource type="Texture2D" uid="uid://b70qbr1ocev0b" path="res://asset/graphics/item/item effect/Coin Effect/02.png" id="7_bsnuq"]
+[ext_resource type="Texture2D" uid="uid://cdole10bi0th5" path="res://asset/graphics/item/item effect/Coin Effect/03.png" id="8_uucan"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fec0r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_doxf5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_wk38i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_0hu2y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_u5s3h")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_s3wyh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_bsnuq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_uucan")
+}],
+"loop": false,
+"name": &"exit",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_724ug"]
+radius = 5.0
+
+[node name="GoldCoin" type="Node2D"]
+script = ExtResource("1_5un0v")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_fec0r")
+animation = &"exit"
+autoplay = "default"
+
+[node name="InteractArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea"]
+shape = SubResource("CircleShape2D_724ug")
+
+[node name="Interactable" type="Node2D" parent="." node_paths=PackedStringArray("animation_sprite", "interact_area")]
+script = ExtResource("5_e4rad")
+animation_sprite = NodePath("../AnimatedSprite2D")
+interact_area = NodePath("../InteractArea")

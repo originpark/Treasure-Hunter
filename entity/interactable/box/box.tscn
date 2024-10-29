@@ -1,0 +1,70 @@
+[gd_scene load_steps=10 format=3 uid="uid://b7m2hnqo80efp"]
+
+[ext_resource type="Texture2D" uid="uid://dm3ttqek80v3l" path="res://asset/graphics/entity/Box/Idle/1.png" id="1_576wx"]
+[ext_resource type="Script" path="res://entity/interactable/box/box.gd" id="1_xtc11"]
+[ext_resource type="Script" path="res://component/interactable/interactable.gd" id="3_11v7n"]
+[ext_resource type="Script" path="res://component/push_able/push_able.gd" id="5_d5gtb"]
+[ext_resource type="Script" path="res://component/tip/tip.gd" id="6_5dpk7"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w76ja"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_576wx")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="Environment" id="Environment_1i543"]
+background_mode = 3
+glow_enabled = true
+glow_blend_mode = 1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vowok"]
+size = Vector2(23, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w7p6o"]
+size = Vector2(27, 15.6667)
+
+[node name="Box" type="CharacterBody2D"]
+scale = Vector2(1.5, 1.5)
+collision_layer = 8
+collision_mask = 31
+script = ExtResource("1_xtc11")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -9)
+sprite_frames = SubResource("SpriteFrames_w76ja")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="AnimatedSprite2D"]
+environment = SubResource("Environment_1i543")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -9)
+shape = SubResource("RectangleShape2D_vowok")
+
+[node name="InteractArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea"]
+position = Vector2(-0.5, -8.83333)
+shape = SubResource("RectangleShape2D_w7p6o")
+debug_color = Color(0.833182, 0.377659, 0.270317, 0.42)
+
+[node name="Interactable" type="Node2D" parent="." node_paths=PackedStringArray("animation_sprite", "interact_area", "collisition_shape")]
+script = ExtResource("3_11v7n")
+animation_sprite = NodePath("../AnimatedSprite2D")
+interact_area = NodePath("../InteractArea")
+collisition_shape = NodePath("../CollisionShape2D")
+
+[node name="PushAble" type="Node" parent="."]
+script = ExtResource("5_d5gtb")
+
+[node name="Tip" type="Node" parent="."]
+script = ExtResource("6_5dpk7")
+tip_text = "按住shift加方向键推动"
+disposable_tip = true
+
+[node name="BubbleMarker" type="Marker2D" parent="."]
+position = Vector2(-8.66667, -30)

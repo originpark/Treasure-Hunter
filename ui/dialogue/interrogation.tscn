@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://bf233tj8kpbv2"]
+
+[ext_resource type="Texture2D" uid="uid://b1xwtxr3ax8k3" path="res://asset/graphics/ui/dialogue/Interrogation/Interrogation In 01.png" id="1_rdeqt"]
+[ext_resource type="Texture2D" uid="uid://6i1jrtvqkqjy" path="res://asset/graphics/ui/dialogue/Interrogation/Interrogation In 02.png" id="2_puxm7"]
+[ext_resource type="Texture2D" uid="uid://wt6aja4avv8n" path="res://asset/graphics/ui/dialogue/Interrogation/Interrogation In 03.png" id="3_uxrme"]
+[ext_resource type="Texture2D" uid="uid://cq8fm5fr0ern0" path="res://asset/graphics/ui/dialogue/Interrogation/Interrogation Out 01.png" id="4_o72cj"]
+[ext_resource type="Texture2D" uid="uid://bkxnrl5nhlu8b" path="res://asset/graphics/ui/dialogue/Interrogation/Interrogation Out 02.png" id="5_lxkx0"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fsp5w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_rdeqt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_puxm7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_uxrme")
+}],
+"loop": false,
+"name": &"in",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_o72cj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_lxkx0")
+}],
+"loop": false,
+"name": &"out",
+"speed": 10.0
+}]
+
+[node name="Interrogation" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_fsp5w")
+animation = &"in"

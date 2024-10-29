@@ -1,33 +1,43 @@
-[gd_resource type="Resource" script_class="DialogueList" load_steps=8 format=3 uid="uid://iriolugta38b"]
+[gd_resource type="Resource" script_class="DialogueList" load_steps=10 format=3 uid="uid://iriolugta38b"]
 
 [ext_resource type="Script" path="res://system/dialogue/dialogue_list.gd" id="1_5bfe6"]
 [ext_resource type="Script" path="res://system/dialogue/dialogue.gd" id="2_nyq2p"]
 
-[sub_resource type="Resource" id="Resource_nqil5"]
+[sub_resource type="Resource" id="Resource_smba3"]
 script = ExtResource("2_nyq2p")
 actor_id = 0
-content = "hi!"
+content = "头好痛....."
 
-[sub_resource type="Resource" id="Resource_cmbim"]
+[sub_resource type="Resource" id="Resource_k4a4o"]
 script = ExtResource("2_nyq2p")
 actor_id = 0
-content = "你们好"
+content = "这里是?"
 
-[sub_resource type="Resource" id="Resource_78h0s"]
+[sub_resource type="Resource" id="Resource_77vfu"]
 script = ExtResource("2_nyq2p")
-actor_id = 0
-content = "我是小丑鼻子啦啦啦"
+actor_id = 1
+content = "小子, 快醒醒!"
 
-[sub_resource type="Resource" id="Resource_0s178"]
+[sub_resource type="Resource" id="Resource_o7d25"]
 script = ExtResource("2_nyq2p")
-actor_id = 0
-content = "我现在正在测试我的对话系统是否正常运行"
+actor_id = 1
+content = "时间来不及了, 我等不了你了......"
 
-[sub_resource type="Resource" id="Resource_ssc76"]
+[sub_resource type="Resource" id="Resource_qpmv0"]
 script = ExtResource("2_nyq2p")
-actor_id = 0
-content = "这是一句很长很长的话这是一句很长很长的话这是一句很长很长的话这是一句很长很长的话这是一句很长很长的话这是一句很长很长的话这是一句很长很长的话这是一句很长很长的话这是一句很长很长的话"
+actor_id = 1
+content = "别忘了点击鼠标右键可以开启或者关闭你的技能"
+
+[sub_resource type="Resource" id="Resource_g13pb"]
+script = ExtResource("2_nyq2p")
+actor_id = 1
+content = "技能开启的状态下, 鼠标左键点击可互动的物品, 就能使用技能了"
+
+[sub_resource type="Resource" id="Resource_32eke"]
+script = ExtResource("2_nyq2p")
+actor_id = 1
+content = "我走了, 你自求多福吧......"
 
 [resource]
 script = ExtResource("1_5bfe6")
-value = Array[ExtResource("2_nyq2p")]([SubResource("Resource_nqil5"), SubResource("Resource_cmbim"), SubResource("Resource_78h0s"), SubResource("Resource_0s178"), SubResource("Resource_ssc76")])
+value = Array[ExtResource("2_nyq2p")]([SubResource("Resource_smba3"), SubResource("Resource_k4a4o"), SubResource("Resource_77vfu"), SubResource("Resource_o7d25"), SubResource("Resource_qpmv0"), SubResource("Resource_g13pb"), SubResource("Resource_32eke")])

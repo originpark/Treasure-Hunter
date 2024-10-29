@@ -1,0 +1,42 @@
+[gd_scene load_steps=10 format=4 uid="uid://cebvqe0gahxa3"]
+
+[ext_resource type="TileSet" uid="uid://b0tpnxs7rp2hx" path="res://resource/tileset/palm_tree_island.tres" id="1_u2ak8"]
+[ext_resource type="Script" path="res://scene/palm_tree_island/pathway_in_front_of_the_door/path_way_in_front_of_the_door.gd" id="1_wpn5q"]
+[ext_resource type="PackedScene" uid="uid://bqh26ieiblwbh" path="res://character/captain_clown_nose/captain_clown_nose.tscn" id="2_fvgff"]
+[ext_resource type="PackedScene" uid="uid://boyenb2ucg75d" path="res://scene/common/palm_tree_island/palm_tree_island_background.tscn" id="2_qn7pc"]
+[ext_resource type="PackedScene" uid="uid://d04f1qkudsvle" path="res://component/camera/camera.tscn" id="3_d5q63"]
+[ext_resource type="Script" path="res://system/dialogue/dialogue_controller.gd" id="5_h3h45"]
+[ext_resource type="Resource" uid="uid://iriolugta38b" path="res://resource/story/story01.tres" id="6_wg8vj"]
+[ext_resource type="PackedScene" uid="uid://dcoax2coga3ys" path="res://character/bomb_guy/bomb_guy.tscn" id="8_41tjq"]
+[ext_resource type="PackedScene" uid="uid://b7m2hnqo80efp" path="res://entity/interactable/box/box.tscn" id="9_46to1"]
+
+[node name="PathWayInFrontOfTheDoor" type="Node2D"]
+script = ExtResource("1_wpn5q")
+
+[node name="Map" type="Node2D" parent="."]
+
+[node name="TileMapLayer" type="Node2D" parent="Map"]
+
+[node name="GroundMapLayer" type="TileMapLayer" parent="Map/TileMapLayer"]
+tile_map_data = PackedByteArray("AAD+/wYAAQABAAAAAAD//wYAAQABAAAAAAAAAAYAAQABAAAAAAABAAYAAQABAAAAAAACAAYAAQABAAAAAAADAAYAAQABAAAAAAD9/wYAAQABAAAAAAD8/wYAAQAGAAEAAAAEAAYAAQAHAAEAAAAEAAUAAQAAAAAAAAAFAAUAAQABAAAAAAAGAAUAAQABAAAAAAAHAAUAAQABAAAAAAAIAAUAAQABAAAAAAAJAAUAAQABAAAAAAAKAAUAAQABAAAAAAALAAUAAQABAAAAAAAMAAUAAQABAAAAAAANAAUAAQABAAAAAAAOAAUAAQABAAAAAAAPAAUAAQABAAAAAAAQAAUAAQABAAAAAAD8/wUAAQACAAEAAAD8/wQAAQACAAEAAAD8/wMAAQACAAEAAAD8/wIAAQACAAEAAAD8/wEAAQACAAEAAAD8/wAAAQACAAEAAAD8////AQACAAEAAAD8//7/AQACAAEAAAD8//3/AQAGAAAAAAD9//3/AQABAAIAAAD+//3/AQABAAIAAAD///3/AQABAAIAAAAAAP3/AQABAAIAAAABAP3/AQABAAIAAAACAP3/AQABAAIAAAADAP3/AQABAAIAAAAEAP3/AQABAAIAAAAFAP3/AQABAAIAAAAGAP3/AQABAAIAAAAHAP3/AQABAAIAAAAIAP7/AQAEAAIAAAAIAP3/AQAKAAEAAAAJAP3/AQABAAIAAAAKAP3/AQABAAIAAAALAP3/AQABAAIAAAAMAP3/AQABAAIAAAANAP3/AQABAAIAAAAOAP3/AQABAAIAAAAPAP3/AQABAAIAAAAQAP3/AQABAAIAAAARAP3/AQABAAIAAAASAP3/AQAHAAAAAAASAP7/AQAAAAEAAAASAP//AQAAAAEAAAASAAAAAQAAAAEAAAASAAEAAQAAAAEAAAASAAIAAQAAAAEAAAASAAMAAQAAAAEAAAASAAQAAQAAAAEAAAARAAUAAQABAAAAAAASAAUAAQAHAAEAAAAFAAYAAQABAAEAAAAGAAYAAQABAAEAAAAHAAYAAQABAAEAAAAIAAYAAQABAAEAAAAJAAYAAQABAAEAAAAKAAYAAQABAAEAAAALAAYAAQABAAEAAAAMAAYAAQABAAEAAAANAAYAAQABAAEAAAAOAAYAAQABAAEAAAAPAAYAAQABAAEAAAAQAAYAAQABAAEAAAARAAYAAQABAAEAAAASAAYAAQABAAEAAAA=")
+tile_set = ExtResource("1_u2ak8")
+
+[node name="PalmTreeIslandBackGround" parent="Map" instance=ExtResource("2_qn7pc")]
+
+[node name="DemoDialogue" type="Node" parent="." node_paths=PackedStringArray("actor_list")]
+script = ExtResource("5_h3h45")
+dialogue_list = ExtResource("6_wg8vj")
+actor_list = [NodePath("../CaptainClownNose"), NodePath("../BombGuy")]
+
+[node name="BombGuy" parent="." instance=ExtResource("8_41tjq")]
+position = Vector2(118, 192)
+
+[node name="CaptainClownNose" parent="." instance=ExtResource("2_fvgff")]
+position = Vector2(0, 192)
+
+[node name="Camera" parent="CaptainClownNose" node_paths=PackedStringArray("tilemap_layer") instance=ExtResource("3_d5q63")]
+tilemap_layer = NodePath("../../Map/TileMapLayer/GroundMapLayer")
+
+[node name="Box" parent="." instance=ExtResource("9_46to1")]
+position = Vector2(223, 157)
+scale = Vector2(1.5, 1.5)

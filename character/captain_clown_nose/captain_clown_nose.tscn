@@ -1,15 +1,25 @@
-[gd_scene load_steps=31 format=3 uid="uid://bqh26ieiblwbh"]
+[gd_scene load_steps=47 format=3 uid="uid://bqh26ieiblwbh"]
 
 [ext_resource type="Script" path="res://character/captain_clown_nose/captain_clown_nose.gd" id="1_ji6uw"]
 [ext_resource type="Script" path="res://component/direction/direction.gd" id="2_lvsqt"]
 [ext_resource type="Texture2D" uid="uid://bricn3pjicd4t" path="res://asset/graphics/character/captain_clown_nose/without_sword/04-Fall/Fall 01.png" id="2_nsxvu"]
 [ext_resource type="Texture2D" uid="uid://ibi74m38fulg" path="res://asset/graphics/character/captain_clown_nose/without_sword/01-Idle/Idle 01.png" id="2_o58i4"]
+[ext_resource type="Texture2D" uid="uid://cala2aescm6om" path="res://asset/graphics/character/captain_clown_nose/without_sword/07-Dead Hit/Dead Hit 01.png" id="2_owhtm"]
+[ext_resource type="Texture2D" uid="uid://dk7ln2l33q4o2" path="res://asset/graphics/character/captain_clown_nose/without_sword/05-Ground/Ground 01.png" id="3_cdn3s"]
+[ext_resource type="Texture2D" uid="uid://2xm2rhs8n5wa" path="res://asset/graphics/character/captain_clown_nose/without_sword/07-Dead Hit/Dead Hit 02.png" id="3_f6umf"]
 [ext_resource type="Script" path="res://component/state_machine/state_machine.gd" id="3_i0fgv"]
 [ext_resource type="Texture2D" uid="uid://btdk3u1tsximf" path="res://asset/graphics/character/captain_clown_nose/without_sword/01-Idle/Idle 02.png" id="3_kif8i"]
+[ext_resource type="Texture2D" uid="uid://pcev0see8gmh" path="res://asset/graphics/character/captain_clown_nose/without_sword/05-Ground/Ground 02.png" id="4_0m188"]
 [ext_resource type="Texture2D" uid="uid://cj6ww3q2wnikh" path="res://asset/graphics/character/captain_clown_nose/without_sword/01-Idle/Idle 03.png" id="4_5srci"]
+[ext_resource type="Texture2D" uid="uid://dghwfoartrbaj" path="res://asset/graphics/character/captain_clown_nose/without_sword/07-Dead Hit/Dead Hit 03.png" id="4_elh1a"]
+[ext_resource type="Texture2D" uid="uid://dc2gty43dntqi" path="res://asset/graphics/character/captain_clown_nose/without_sword/06-Hit/Hit 01.png" id="5_a76qx"]
+[ext_resource type="Texture2D" uid="uid://4qahb4am1cwr" path="res://asset/graphics/character/captain_clown_nose/without_sword/07-Dead Hit/Dead Hit 04.png" id="5_l03wa"]
 [ext_resource type="Texture2D" uid="uid://dc68ekuisj8cb" path="res://asset/graphics/character/captain_clown_nose/without_sword/01-Idle/Idle 04.png" id="5_ms7d6"]
+[ext_resource type="Texture2D" uid="uid://domnsprer31r" path="res://asset/graphics/character/captain_clown_nose/without_sword/06-Hit/Hit 02.png" id="6_emwu1"]
 [ext_resource type="Texture2D" uid="uid://bratj5ntglw51" path="res://asset/graphics/character/captain_clown_nose/without_sword/01-Idle/Idle 05.png" id="6_m4aag"]
+[ext_resource type="Texture2D" uid="uid://dxgm0moa8h4j5" path="res://asset/graphics/character/captain_clown_nose/without_sword/06-Hit/Hit 03.png" id="7_hq642"]
 [ext_resource type="Texture2D" uid="uid://dgtf4otd0412h" path="res://asset/graphics/character/captain_clown_nose/without_sword/03-Jump/Jump 01.png" id="8_1y05p"]
+[ext_resource type="Texture2D" uid="uid://3pofre70dosv" path="res://asset/graphics/character/captain_clown_nose/without_sword/06-Hit/Hit 04.png" id="8_rxtce"]
 [ext_resource type="Texture2D" uid="uid://calf6vffbalos" path="res://asset/graphics/character/captain_clown_nose/without_sword/03-Jump/Jump 02.png" id="9_6ofc1"]
 [ext_resource type="Texture2D" uid="uid://3buejbl4he48" path="res://asset/graphics/character/captain_clown_nose/without_sword/03-Jump/Jump 03.png" id="10_s45s3"]
 [ext_resource type="Texture2D" uid="uid://btrukfhqo77j7" path="res://asset/graphics/character/captain_clown_nose/without_sword/02-Run/Run 01.png" id="11_tqwww"]
@@ -22,6 +32,8 @@
 [ext_resource type="Script" path="res://character/captain_clown_nose/states/captain_run.gd" id="20_tjrgv"]
 [ext_resource type="Script" path="res://character/captain_clown_nose/states/captain_jump.gd" id="21_f0y5b"]
 [ext_resource type="Script" path="res://character/captain_clown_nose/states/captain_fall.gd" id="22_p3fii"]
+[ext_resource type="Script" path="res://component/stats/stats.gd" id="25_hbaeg"]
+[ext_resource type="Script" path="res://character/captain_clown_nose/states/captain_hit.gd" id="29_l0je6"]
 
 [sub_resource type="Animation" id="Animation_4243h"]
 length = 0.001
@@ -48,6 +60,35 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_305lh"]
+resource_name = "dead"
+length = 0.4
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CaptainAnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"dead"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CaptainAnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
 }
 
 [sub_resource type="Animation" id="Animation_xs728"]
@@ -78,6 +119,64 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_shun8"]
+resource_name = "ground"
+length = 0.2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CaptainAnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"ground"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CaptainAnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_bu05v"]
+resource_name = "hit"
+length = 0.4
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CaptainAnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"hit"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CaptainAnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
 }
 
 [sub_resource type="Animation" id="Animation_m5isy"]
@@ -173,7 +272,10 @@ tracks/1/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_18yq4"]
 _data = {
 "RESET": SubResource("Animation_4243h"),
+"dead": SubResource("Animation_305lh"),
 "fall": SubResource("Animation_xs728"),
+"ground": SubResource("Animation_shun8"),
+"hit": SubResource("Animation_bu05v"),
 "idle": SubResource("Animation_m5isy"),
 "jump": SubResource("Animation_ovo0b"),
 "run": SubResource("Animation_shnv0")
@@ -183,10 +285,55 @@ _data = {
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("2_owhtm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_f6umf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_elh1a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_l03wa")
+}],
+"loop": false,
+"name": &"dead",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("2_nsxvu")
 }],
 "loop": true,
 "name": &"fall",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_cdn3s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_0m188")
+}],
+"loop": false,
+"name": &"ground",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_a76qx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_emwu1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_hq642")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_rxtce")
+}],
+"loop": false,
+"name": &"hit",
 "speed": 10.0
 }, {
 "frames": [{
@@ -247,20 +394,25 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_buwsp"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1npuk"]
 radius = 9.0
-height = 26.0
+height = 28.0
 
-[node name="CaptainClownNose" type="CharacterBody2D" node_paths=PackedStringArray("graphics", "direction", "state_machine", "animation_player", "bubble_marker")]
-collision_mask = 4
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dfngk"]
+size = Vector2(232, 116)
+
+[node name="CaptainClownNose" type="CharacterBody2D" node_paths=PackedStringArray("graphics", "direction", "state_machine", "stats", "animation_player", "bubble_marker")]
+collision_mask = 28
 script = ExtResource("1_ji6uw")
 graphics = NodePath("Graphics")
 direction = NodePath("Direction")
 state_machine = NodePath("StateMachine")
+stats = NodePath("Stats")
 animation_player = NodePath("Graphics/AnimationPlayer")
 bubble_marker = NodePath("BubbleMarker2D")
 
 [node name="Graphics" type="Node2D" parent="."]
+scale = Vector2(-1, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Graphics"]
 libraries = {
@@ -292,9 +444,31 @@ script = ExtResource("21_f0y5b")
 [node name="CaptainFall" type="Node" parent="StateMachine"]
 script = ExtResource("22_p3fii")
 
+[node name="CaptainHit" type="Node" parent="StateMachine"]
+script = ExtResource("29_l0je6")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -13)
-shape = SubResource("CapsuleShape2D_buwsp")
+position = Vector2(0, -14)
+shape = SubResource("CapsuleShape2D_1npuk")
 
 [node name="BubbleMarker2D" type="Marker2D" parent="."]
 position = Vector2(10, -21)
+
+[node name="Stats" type="Node" parent="."]
+script = ExtResource("25_hbaeg")
+MAX_HP = 15.0
+HP = 15.0
+STR = 2.0
+DEF = 1.0
+ATS = 1.0
+ADF = 1.0
+
+[node name="DetectionArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+position = Vector2(0, -11)
+shape = SubResource("RectangleShape2D_dfngk")
+
+[connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]

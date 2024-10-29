@@ -19,6 +19,12 @@ func update(delta: float) -> void:
 	
 
 func physics_update(delta: float) -> void:
+	if character.is_hurt:
+		transition_to("CaptainHit")
+		return
 	if character.velocity.y > 0.0:
 		transition_to("CaptainFall")
+		return
+	if character.is_on_floor():
+		transition_to("CaptainIdle")
 		return
